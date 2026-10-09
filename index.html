@@ -37,35 +37,50 @@
     <meta name="theme-color" content="#ff9500">
     <meta name="msapplication-TileColor" content="#ff9500">
     
+    <script src="js/theme.js"></script>
     <link href="styles.css" rel="stylesheet">
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="js/gzip-utils.js"></script>
+    <script src="js/embedded-code.js"></script>
 </head>
 
 <body>
+    <a class="skip-link" href="#table-container" onclick="document.getElementById('table-container').focus(); return true;">Hopp til hovedinnhold</a>
     <main role="main" aria-labelledby="page-title">
         <header class="page-hero" aria-labelledby="page-title">
-            <h1 id="page-title">WCAG-brudd topplista</h1>
-            <div class="hero-actions">
-                <button aria-label="Lær mer om denne applikasjonen" id="open-readme-dialog">Vis readme fra GitHub -repo</button>
-                <button aria-label="Se trend animasjon" onclick="window.location.href='D3trend.html'" class="trend-button">📈 Trend Animasjon</button>
+            <div class="hero-top">
+                <h1 id="page-title">WCAG-brudd topplista</h1>
+                <div class="hero-actions">
+                    <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false"><span class="theme-toggle-icon" aria-hidden="true">☀️</span> <span class="theme-toggle-label">Lys modus</span></button>
+                    <button aria-label="Lær mer om denne applikasjonen" id="open-readme-dialog">Vis readme fra GitHub -repo</button>
+                    <button aria-label="Se trend animasjon" onclick="window.location.href='D3trend.html'" class="trend-button">📈 Trend Animasjon</button>
+                </div>
             </div>
             <div id="accessible-description"></div>
         </header>
-        <section class="navigation-section" aria-label="Navigasjon for dato">
-            <div class="navigation-controls">
+        <section class="toolbar" aria-label="Verktøylinje for topplista">
+            <div class="navigation-controls" role="group" aria-label="Navigasjon for dato">
                 <button id="prev-day">Forrige dag</button>
                 <span id="current-date"></span>
                 <button id="next-day">Neste dag</button>
             </div>
-        </section>
-        <section class="view-section" aria-label="Visningskontroller">
-            <div class="view-controls">
-                <label for="view-selector">Vis kolonner basert på:</label>
-                <select id="view-selector">
-                    <option value="types">Bruddtyper</option>
-                    <option value="tags">WCAG-tagger</option>
-                </select>
+            <div class="view-controls" role="group" aria-label="Visningskontroller">
+                <button id="toggle-detail-columns" type="button" class="detail-columns-toggle" aria-expanded="false"
+                    aria-controls="table-container">Vis alle kolonner</button>
+                <div class="view-selector-group" hidden>
+                    <label for="view-selector">Vis kolonner basert på:</label>
+                    <select id="view-selector">
+                        <option value="types">Bruddtyper</option>
+                        <option value="tags">WCAG-tagger</option>
+                    </select>
+                </div>
+                <div class="mobile-sort-controls" role="group" aria-label="Sortering av tabellen">
+                    <label for="mobile-sort-column">Sorter etter:</label>
+                    <select id="mobile-sort-column"></select>
+                    <button id="mobile-sort-direction" type="button">Sorter stigende</button>
+                </div>
+            </div>
+            <div class="report-actions" role="group" aria-label="Sammendrag">
                 <button aria-label="Se tagg sammendrag" id="view-summary">Vis tagg sammendrag</button>
                 <button aria-label="Se døde lenker" id="view-invalid-urls">Vis døde lenker</button>
             </div>
@@ -80,7 +95,7 @@
         <section class="reports-section" aria-label="WCAG-brudd topplista">
             <nav aria-label="WCAG-brudd topplista">
                 <div class="table-wrapper">
-                    <div id="table-container"></div>
+                    <div id="table-container" tabindex="-1"></div>
                     <div id="pagination-controls" class="pagination-controls">
                         <button id="prev-page" aria-label="Forrige side">←</button>
                         <span id="page-indicator">Side <span id="current-page-num">1</span> av <span
@@ -90,21 +105,21 @@
                 </div>
             </nav>
         </section>
-        <dialog class="details-dialog" id="details-dialog">
+        <dialog class="details-dialog" id="details-dialog" aria-labelledby="dialog-title">
             <h2 id="dialog-title">Rapportdetaljer</h2>
             <div id="dialog-content"></div>
         </dialog>
-        <dialog class="details-dialog summary-dialog" id="summary-dialog">
+        <dialog class="details-dialog summary-dialog" id="summary-dialog" aria-labelledby="summary-dialog-title">
             <h2 id="summary-dialog-title">Tag Sammendrag</h2>
             <div id="summary-dialog-content"></div>
             <button aria-label="Lukk sammendrag" class="dialog-close" id="close-summary-dialog">×</button>
         </dialog>
-        <dialog class="details-dialog invalid-urls-dialog" id="invalid-urls-dialog">
+        <dialog class="details-dialog invalid-urls-dialog" id="invalid-urls-dialog" aria-labelledby="invalid-urls-dialog-title">
             <h2 id="invalid-urls-dialog-title">Døde lenker</h2>
             <div id="invalid-urls-dialog-content"></div>
             <button aria-label="Lukk døde lenker dialog" class="dialog-close" id="close-invalid-urls-dialog">×</button>
         </dialog>
-        <dialog class="details-dialog" id="achievements-dialog">
+        <dialog class="details-dialog" id="achievements-dialog" aria-labelledby="achievements-dialog-title">
             <h2 id="achievements-dialog-title">Achievements 🏆</h2>
             <div id="achievements-dialog-content"></div>
             <button aria-label="Lukk achievements dialog" class="dialog-close" id="close-achievements-dialog">×</button>
@@ -852,7 +867,8 @@
                             .sort((a, b) => a.date.localeCompare(b.date))
                             .map(report => ({
                                 date: report.date,
-                                violations: report.violationCount
+                                violations: report.violationCount,
+                                filename: report.filename
                             }))
                     );
                 });
@@ -865,6 +881,55 @@
             }
 
             return projectTrendCache.trendsByProject.get(projectName) || [];
+        }
+
+        async function loadTrendReportDetails(trendData) {
+            const points = trendData.filter(point => point.violations > 0 && point.filename);
+            const details = new Map();
+
+            for (const point of points) {
+                try {
+                    const reportUrl = point.filename.split('/').map(encodeURIComponent).join('/');
+                    const response = await fetch(reportUrl);
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    details.set(point.date, await response.json());
+                } catch (error) {
+                    console.warn(`Could not load trend details for ${point.date}:`, error.message);
+                }
+            }
+
+            return trendData.map(point => ({
+                ...point,
+                report: details.get(point.date) || null
+            }));
+        }
+
+        function formatTrendPointTooltip(point) {
+            const lines = [`${point.date}: ${point.violations} violation${point.violations === 1 ? '' : 's'}`];
+            const violations = point.report?.violations || [];
+
+            violations
+                .filter(violation => violation && Number(violation.violation_count) > 0)
+                .forEach(violation => {
+                    const count = Number(violation.violation_count);
+                    const countLabel = Number.isFinite(count) && count > 1 ? ` (${count})` : '';
+                    lines.push(`${violation.help || violation.rule_id || violation.description || 'Violation'}${countLabel}`);
+
+                    const embedded = window.EmbeddedCode
+                        ? window.EmbeddedCode.analyzeReport({
+                            ...point.report,
+                            violations: [violation]
+                        })
+                        : { count: 0, providers: [] };
+                    if (embedded.count > 0) {
+                        const providerLabel = embedded.providers.length
+                            ? ` from ${embedded.providers.join(' and ')}`
+                            : '';
+                        lines.push(`Cause: Embedded code${providerLabel}`);
+                    }
+                });
+
+            return lines.join('\n');
         }
 
         function countViolationChanges(trendData) {
@@ -900,7 +965,7 @@
             }
         }
 
-        function showTrendsDialog(projectName, trendData) {
+        async function showTrendsDialog(projectName, trendData) {
             const dialog = document.getElementById('trends-dialog');
             const title = document.getElementById('trends-dialog-title');
             const content = document.getElementById('trends-dialog-content');
@@ -918,12 +983,17 @@
                 return;
             }
 
-            const first = trendData[0];
-            const last = trendData[trendData.length - 1];
-            const increaseCount = trendData.slice(1).filter((point, index) =>
-                point.violations > trendData[index].violations).length;
-            const decreaseCount = trendData.slice(1).filter((point, index) =>
-                point.violations < trendData[index].violations).length;
+            content.innerHTML = '<p class="trend-loading">Loading violation details…</p>';
+            dialog.showModal();
+            const detailedTrendData = await loadTrendReportDetails(trendData);
+            content.replaceChildren();
+
+            const first = detailedTrendData[0];
+            const last = detailedTrendData[detailedTrendData.length - 1];
+            const increaseCount = detailedTrendData.slice(1).filter((point, index) =>
+                point.violations > detailedTrendData[index].violations).length;
+            const decreaseCount = detailedTrendData.slice(1).filter((point, index) =>
+                point.violations < detailedTrendData[index].violations).length;
 
             const summary = document.createElement('p');
             summary.className = 'trend-summary';
@@ -937,7 +1007,7 @@
             chartContainer.setAttribute('role', 'img');
             chartContainer.setAttribute(
                 'aria-label',
-                `Trend graph for ${projectName}: ${trendData.length} reports and ${changeCount} changes in violations`
+                `Trend graph for ${projectName}: ${detailedTrendData.length} reports and ${changeCount} changes in violations`
             );
             content.appendChild(chartContainer);
 
@@ -947,7 +1017,7 @@
             const width = chartWidth - margin.left - margin.right;
             const height = chartHeight - margin.top - margin.bottom;
             const parseDate = d3.utcParse('%Y-%m-%d');
-            const chartData = trendData.map(point => ({
+            const chartData = detailedTrendData.map(point => ({
                 ...point,
                 parsedDate: parseDate(point.date)
             }));
@@ -1011,9 +1081,8 @@
                 .attr('cy', point => yScale(point.violations))
                 .attr('r', 4)
                 .append('title')
-                .text(point => `${point.date}: ${point.violations} violations`);
+                .text(formatTrendPointTooltip);
 
-            dialog.showModal();
         }
 
         function calculateNoViolationsStreak(projectName, reportList, currentReport = null, selectedDate = null) {
@@ -1117,6 +1186,29 @@
 
     return streak;
         }
+
+        // Count days with violations up to the selected date, using the newest valid report per day.
+        function calculateDaysWithViolations(projectName, reportList, selectedDate = null) {
+            const reportsByDate = new Map();
+            reportList
+                .filter(filename => !filename.includes('-FAILED.json') && !filename.includes('-SKIPPED.json'))
+                .map(parseReportFilename)
+                .filter(report => report && report.project === projectName && (!selectedDate || report.date <= selectedDate))
+                .forEach(report => {
+                    const existingReport = reportsByDate.get(report.date);
+                    if (!existingReport || report.filename > existingReport.filename) {
+                        reportsByDate.set(report.date, report);
+                    }
+                });
+
+            let daysWithViolations = 0;
+            reportsByDate.forEach(report => {
+                if (!report.filename.includes('-count-0')) {
+                    daysWithViolations++;
+                }
+            });
+            return daysWithViolations;
+        }
         
         function showReportDetails(report) {
             const dialog = document.getElementById('details-dialog');
@@ -1189,13 +1281,16 @@
             tableContainer.innerHTML = '';
 
             const latestReports = reports;
+            const achievementsByProject = await loadProjectAchievements();
             const reportStreaks = new Map();
+            const reportDayCounts = new Map();
             const viewMode = document.getElementById('view-selector').value;
 
             // Calculate streaks for each project up to the selected date
             latestReports.forEach(report => {
                 const streak = calculateNoViolationsStreak(report.project, reportList, report, date);
                 reportStreaks.set(report.project, streak);
+                reportDayCounts.set(report.project, calculateDaysWithViolations(report.project, reportList, date));
             });
 
             // Find the maximum streak value to add fire emoji to top performers
@@ -1221,22 +1316,29 @@
                 'Achievements',
                 'Trends',
                 'Totalt antall brudd',
-                'Streak (dager uten brudd)',
+                'Streak',
+                'Dager med brudd',
+                'Feil pga. embedded kode',
                 ...(viewMode === 'types' ? Array.from(allViolationTypes) : Array.from(allViolationTags)),
             ];
 
             const table = document.createElement('table');
             table.className = 'sortable';
+            table.classList.toggle('details-collapsed', !detailColumnsExpanded);
+            table.setAttribute('aria-label', `WCAG-brudd topplista for ${date}, sortérbar tabell`);
 
             const caption = document.createElement('caption');
             caption.textContent = `WCAG-brudd topplista for ${date}`;
+            caption.id = `table-caption-${date.replace(/-/g,'')}`;
             table.appendChild(caption);
+            table.setAttribute('aria-labelledby', caption.id);
 
             const thead = document.createElement('thead');
             const headerRow = document.createElement('tr');
             columns.forEach((col, index) => {
                 const th = document.createElement('th');
                 th.setAttribute('scope', 'col');
+                if (index >= FIRST_DETAIL_COLUMN_INDEX) th.classList.add('detail-col');
 
                 // Don't make the rank column sortable
                 if (index !== 0) {
@@ -1246,6 +1348,11 @@
                     const button = document.createElement('button');
                     button.type = 'button';
                     button.setAttribute('aria-label', `Sort by ${col}`);
+
+                    const mobileHeaderLabel = document.createElement('span');
+                    mobileHeaderLabel.className = 'mobile-column-label';
+                    mobileHeaderLabel.textContent = col;
+                    th.appendChild(mobileHeaderLabel);
 
                     // Add column text
                     const columnText = document.createElement('span');
@@ -1281,6 +1388,8 @@
 
                 columns.forEach((col, index) => {
                     const cell = document.createElement('td');
+                    cell.dataset.label = col;
+                    if (index >= FIRST_DETAIL_COLUMN_INDEX) cell.classList.add('detail-col');
                     if (index === 0) {
                         // Rank column - will be updated after sorting
                         cell.className = 'rank-cell';
@@ -1302,27 +1411,10 @@
                         });
                         cell.appendChild(button);
                     } else if (index === 3) {
-                        // Achievements column
-                        const achievementsButton = document.createElement('button');
-                        achievementsButton.className = 'achievements-button';
-                        achievementsButton.textContent = '🏆 Achievements';
-                        achievementsButton.setAttribute('aria-label', `View achievements for ${report.project}`);
-                        
-                        // Find project in projects list to get achievements
-                        // Note: achievements data will be loaded separately via projects.json
-                        achievementsButton.addEventListener('click', async (e) => {
-                            e.stopPropagation();
-                            try {
-                                const projectsData = await fetch('projects.json').then(r => r.json());
-                                const projectData = projectsData.find(p => p.name === report.project);
-                                const achievements = projectData?.achievements || [];
-                                showAchievementsDialog(report.project, achievements);
-                            } catch (error) {
-                                console.error('Error loading achievements:', error);
-                                showAchievementsDialog(report.project, []);
-                            }
-                        });
-                        cell.appendChild(achievementsButton);
+                        // Achievements column: sorted by number of achievements
+                        const achievements = achievementsByProject.get(report.project) || [];
+                        cell.dataset.sortValue = achievements.length;
+                        cell.appendChild(createAchievementsButton(report.project, achievements));
                     } else if (index === 4) {
                         const trendsButton = document.createElement('button');
                         trendsButton.className = 'trends-button';
@@ -1346,6 +1438,17 @@
                         cell.dataset.sortValue = streakValue;
                         // Add fire emoji for projects with the highest streak
                         cell.textContent = streakValue === maxStreak && maxStreak > 0 ? `${streakValue} 🔥` : streakValue;
+                    } else if (index === 7) {
+                        const daysWithViolations = reportDayCounts.get(report.project);
+                        cell.dataset.sortValue = daysWithViolations;
+                        cell.textContent = daysWithViolations;
+                    } else if (index === 8) {
+                        // Violations where every affected element comes from third-party embedded code.
+                        const { count, providers } = window.EmbeddedCode
+                            ? window.EmbeddedCode.analyzeReport(report)
+                            : { count: 0, providers: [] };
+                        cell.dataset.sortValue = count;
+                        cell.textContent = count > 0 && providers.length ? `${count} (${providers.join(', ')})` : count;
                     } else {
                         if (viewMode === 'types') {
                             cell.textContent = report.violations.find(v => v.id === col)?.violation_count || 0;
@@ -1365,9 +1468,54 @@
 
             tableContainer.appendChild(table);
 
+            const mobileSortColumn = document.getElementById('mobile-sort-column');
+            mobileSortColumn.replaceChildren();
+            columns.forEach((column, index) => {
+                if (index === 0) return;
+                const option = document.createElement('option');
+                option.value = String(index);
+                option.textContent = column;
+                if (index >= FIRST_DETAIL_COLUMN_INDEX) option.className = 'detail-col-option';
+                mobileSortColumn.appendChild(option);
+            });
+            applyDetailColumnsState(table, columns.length - FIRST_DETAIL_COLUMN_INDEX);
+            mobileSortColumn.value = '6';
+            mobileSortColumn.onchange = () => sortTable(table, Number(mobileSortColumn.value));
+            document.getElementById('mobile-sort-direction').onclick = () => {
+                sortTable(table, Number(mobileSortColumn.value));
+            };
+
             // Set initial sort direction and apply sort
             table.dataset.sortDirection = 'desc';
             sortTable(table, 6, true);
+        }
+
+        // Columns after 'Feil pga. embedded kode' (per violation type / WCAG tag) are collapsed by default
+        const FIRST_DETAIL_COLUMN_INDEX = 9;
+        let detailColumnsExpanded = false;
+
+        function applyDetailColumnsState(table, detailColumnCount) {
+            const toggle = document.getElementById('toggle-detail-columns');
+            table.classList.toggle('details-collapsed', !detailColumnsExpanded);
+            toggle.setAttribute('aria-expanded', String(detailColumnsExpanded));
+            toggle.textContent = detailColumnsExpanded
+                ? 'Skjul detaljkolonner'
+                : `Vis alle kolonner (${detailColumnCount} til)`;
+            toggle.hidden = detailColumnCount === 0;
+            document.querySelector('.view-selector-group').hidden = !detailColumnsExpanded;
+            document.querySelectorAll('#mobile-sort-column .detail-col-option').forEach(option => {
+                option.hidden = !detailColumnsExpanded;
+                option.disabled = !detailColumnsExpanded;
+            });
+
+            toggle.onclick = () => {
+                detailColumnsExpanded = !detailColumnsExpanded;
+                applyDetailColumnsState(table, detailColumnCount);
+                // Don't leave the table sorted by a column that is now hidden
+                if (!detailColumnsExpanded && currentSortColumnIndex >= FIRST_DETAIL_COLUMN_INDEX) {
+                    sortTable(table, 6, true);
+                }
+            };
         }
 
         function sortTable(table, columnIndex, isInitialSort = false) {
@@ -1410,6 +1558,20 @@
             if (currentHeader.classList.contains('sortable')) {
                 currentHeader.classList.add(newSortDirection === 'asc' ? 'sort-asc' : 'sort-desc');
                 currentHeader.setAttribute('aria-sort', newSortDirection === 'asc' ? 'ascending' : 'descending');
+
+                const mobileSortColumn = document.getElementById('mobile-sort-column');
+                if (mobileSortColumn) {
+                    mobileSortColumn.value = String(columnIndex);
+                }
+                const mobileSortDirection = document.getElementById('mobile-sort-direction');
+                if (mobileSortDirection) {
+                    const nextDirection = newSortDirection === 'asc' ? 'synkende' : 'stigende';
+                    mobileSortDirection.textContent = `Sorter ${nextDirection}`;
+                    mobileSortDirection.setAttribute(
+                        'aria-label',
+                        `Sorteringsretning: ${newSortDirection === 'asc' ? 'stigende' : 'synkende'}. Aktiver for å sortere ${nextDirection}.`
+                    );
+                }
 
                 // Update button aria-label to indicate current sort state
                 const button = currentHeader.querySelector('button');

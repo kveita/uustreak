@@ -22,6 +22,171 @@ function calculateDaysSinceDate(dateStr) {
     return Math.floor((today - date) / (1000 * 60 * 60 * 24));
 }
 
+function formatViolationReason(violation) {
+    if (!violation || typeof violation !== 'object') {
+        return null;
+    }
+
+    const label = violation.help || violation.rule_id || violation.description || 'Violation';
+    const countValue = Number(violation.violation_count);
+    const count = Number.isFinite(countValue) ? countValue : null;
+
+    return count && count > 1 ? `${label} (${count})` : label;
+}
+
+function getEmbeddedCodeProviders(violation) {
+    const nodes = Array.isArray(violation?.nodes) ? violation.nodes : [];
+    const evidence = [
+        violation?.id,
+        violation?.help,
+        violation?.description,
+        ...nodes.flatMap(node => [node?.html, ...(node?.target || []), node?.failureSummary]),
+    ].filter(Boolean).join(' ').toLowerCase();
+
+    const providers = [
+        ['OneTrust', /\b(?:onetrust|ot-[a-z0-9_-]+|onetrust-[a-z0-9_-]+)\b/i],
+        ['TrustArc', /\btrustarc\b/i],
+        ['Cookiebot', /\bcookiebot\b/i],
+        ['Didomi', /\bdidomi\b/i],
+        ['ConsentManager', /\bconsentmanager\b/i],
+        ['Quantcast', /\bquantcast\b/i],
+        ['Usercentrics', /\busercentrics\b/i],
+    ];
+    return providers.filter(([, pattern]) => pattern.test(evidence)).map(([name]) => name);
+}
+
+function classifyViolationSource(violation) {
+    const nodes = Array.isArray(violation?.nodes) ? violation.nodes : [];
+    const evidence = [
+        violation?.id,
+        violation?.help,
+        violation?.description,
+        ...nodes.flatMap(node => [node?.html, ...(node?.target || []), node?.failureSummary]),
+    ].filter(Boolean).join(' ').toLowerCase();
+    const providers = getEmbeddedCodeProviders(violation);
+    const embeddedCode = providers.length > 0
+        || /\bcookie consent\b|<(?:iframe|script|embed|object)\b/i.test(evidence);
+    return { type: embeddedCode ? 'embedded' : 'page', providers };
+}
+
+function formatLostStreakCause(violations) {
+    const classifications = violations.map(classifyViolationSource);
+    const hasEmbedded = classifications.some(source => source.type === 'embedded');
+    const hasPageContent = classifications.some(source => source.type === 'page');
+    const providers = [...new Set(classifications.flatMap(source => source.providers))];
+    const embeddedLabel = providers.length > 0
+        ? `Embedded code from ${providers.join(' and ')}`
+        : 'Embedded code';
+
+    if (hasEmbedded && hasPageContent) {
+        return `${embeddedLabel} and page content`;
+    }
+    if (hasEmbedded) {
+        return embeddedLabel;
+    }
+    if (hasPageContent) {
+        return 'Page content';
+    }
+    return 'Unknown source';
+}
+
+async function getLostStreakReason(projectName, lostDate, reportList) {
+    if (!Array.isArray(reportList) || reportList.length === 0 || !projectName || !lostDate) {
+        console.warn(`Cannot look up lost streak reason for ${projectName} on ${lostDate}: report list or streak metadata is missing`);
+        return null;
+    }
+
+    const matchingReports = reportList
+        .map((entry) => {
+            const parsed = path.basename(entry);
+            const reportMeta = parsed.match(/^violations-(.+?)-(\d{4}-\d{2}-\d{2})T(\d{2}-\d{2}-\d{2}_\d{3}Z)(?:-count-(\d+))?\.json$/);
+            if (!reportMeta) {
+                return null;
+            }
+
+            return {
+                project: reportMeta[1],
+                date: reportMeta[2],
+                timestamp: reportMeta[3],
+                count: reportMeta[4] ? Number.parseInt(reportMeta[4], 10) : -1,
+                entry,
+            };
+        })
+        .filter((report) => report && report.project === projectName && report.date === lostDate)
+        .sort((left, right) => right.timestamp.localeCompare(left.timestamp));
+
+    const report = matchingReports[0];
+    if (!report) {
+        console.warn(`No report found for lost streak reason for ${projectName} on ${lostDate}`);
+        return null;
+    }
+
+    const reportPath = path.join(process.cwd(), report.entry);
+    try {
+        let reportData;
+        if (fs.existsSync(reportPath)) {
+            reportData = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+        } else {
+            const baseUrl = process.env.SITE_BASE_URL;
+            if (!baseUrl) {
+                throw new Error('Report is not available locally and SITE_BASE_URL is not set');
+            }
+            const relativePath = report.entry.split('/').map(encodeURIComponent).join('/');
+            const response = await fetch(`${baseUrl.replace(/\/$/, '')}/${relativePath}`, {
+                signal: AbortSignal.timeout(30000),
+            });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            reportData = await response.json();
+        }
+        if (!reportData || !Array.isArray(reportData.violations)) {
+            throw new Error('Report does not contain a violations array');
+        }
+        const violations = Array.isArray(reportData.violations)
+            ? reportData.violations.filter((violation) => violation && typeof violation === 'object' && Number(violation.violation_count) > 0)
+            : [];
+        const totalViolationsValue = reportData.total_violations;
+        const totalViolations = Number.isFinite(totalViolationsValue) && totalViolationsValue > 0
+            ? totalViolationsValue
+            : (report.count >= 0 ? report.count : violations.reduce((sum, violation) => sum + Number(violation.violation_count || 0), 0));
+
+        const summary = violations
+            .slice(0, 3)
+            .map(formatViolationReason)
+            .filter(Boolean);
+        const cause = formatLostStreakCause(violations);
+
+        if (summary.length > 0) {
+            const remaining = violations.length - summary.length;
+            const suffix = remaining > 0 ? `, and ${remaining} more` : '';
+            return `${cause}: ${totalViolations} violation${totalViolations === 1 ? '' : 's'} found: ${summary.join(', ')}${suffix}`;
+        }
+
+        if (totalViolations > 0) {
+            return `${cause}: ${totalViolations} violation${totalViolations === 1 ? '' : 's'} found`;
+        }
+        throw new Error('Loss-date report does not contain positive violations');
+    } catch (error) {
+        console.warn(`Could not read lost streak reason for ${projectName} on ${lostDate}:`, error.message);
+    }
+
+    return null;
+}
+
+async function enrichLostStreakReasons(projectName, lostStreaks, reportList, achievements) {
+    const enriched = [];
+    for (const lostStreak of lostStreaks || []) {
+        const existing = achievements.find(
+            achievement => achievement.type === 'nobodys_perfect' && achievement.toDate === lostStreak.endDate
+        );
+        enriched.push({
+            ...lostStreak,
+            reason: lostStreak.reason || existing?.lostReason
+                || await getLostStreakReason(projectName, lostStreak.lostDate, reportList),
+        });
+    }
+    return enriched;
+}
+
 /**
  * Track achievements for all projects
  * Updates projects.json with new achievements based on streaks and metrics
@@ -60,6 +225,14 @@ async function trackAchievements() {
             console.log(`Using report-list.json: ${reportList.length} entries`);
         }
 
+        if (!reportList && fs.existsSync(reportListPath)) {
+            try {
+                reportList = JSON.parse(fs.readFileSync(reportListPath, 'utf8'));
+            } catch (e) {
+                console.warn('Could not parse report-list.json for lost streak reasons:', e.message);
+            }
+        }
+
         // Get today's date
         const today = new Date().toISOString().split('T')[0];
 
@@ -83,13 +256,27 @@ async function trackAchievements() {
             const longestStreak = streakResult.longestStreak;
             const longestStreakStart = streakResult.longestStreakStart;
             const longestStreakEnd = streakResult.longestStreakEnd;
+            const lostStreaks = await enrichLostStreakReasons(project.name, streakResult.lostStreaks || [], reportList, achievements);
+
+            let backfilledLostReasons = false;
+            let projectUpdated = false;
+            for (const lostStreak of lostStreaks) {
+                const existingLostAchievement = achievements.find(
+                    (achievement) => achievement.type === 'nobodys_perfect' && achievement.toDate === lostStreak.endDate
+                );
+
+                if (existingLostAchievement && !existingLostAchievement.lostReason && lostStreak.reason) {
+                    existingLostAchievement.lostReason = lostStreak.reason;
+                    backfilledLostReasons = true;
+                }
+            }
             
             // Check for new achievements
             const newAchievements = checkForNewAchievements(
                 project.name, 
                 streak, 
                 achievements, 
-                { startDate: streakStartDate, endDate: streakEndDate, longestStreak, longestStreakStart, longestStreakEnd }
+                { startDate: streakStartDate, endDate: streakEndDate, longestStreak, longestStreakStart, longestStreakEnd, lostStreaks }
             );
 
             if (newAchievements.length > 0) {
@@ -101,6 +288,14 @@ async function trackAchievements() {
                     }
                 });
 
+                projectUpdated = true;
+            }
+
+            if (backfilledLostReasons) {
+                projectUpdated = true;
+            }
+
+            if (projectUpdated) {
                 updatedCount++;
             }
 
@@ -137,13 +332,14 @@ function calculateStreakFromIndex(projectName, streakIndex) {
     const BATCH_SIZE = 500;
     const dates = Object.keys(dateMap).sort();
 
-    if (dates.length === 0) return { days: 0, startDate: null, longestStreak: 0, longestStreakStart: null };
+    if (dates.length === 0) return { days: 0, startDate: null, longestStreak: 0, longestStreakStart: null, lostStreaks: [] };
 
     let currentRunStart = null;
     let currentRunEnd = null;
     let longestStreak = 0;
     let longestStreakStart = null;
     let longestStreakEnd = null;
+    const lostStreaks = [];
 
     for (let batchStart = 0; batchStart < dates.length; batchStart += BATCH_SIZE) {
         const batch = dates.slice(batchStart, batchStart + BATCH_SIZE);
@@ -158,6 +354,7 @@ function calculateStreakFromIndex(projectName, streakIndex) {
                     longestStreakEnd = currentRunEnd;
                 }
             } else {
+                recordLostStreak(lostStreaks, currentRunStart, currentRunEnd, dateStr);
                 currentRunStart = null;
                 currentRunEnd = null;
             }
@@ -174,8 +371,20 @@ function calculateStreakFromIndex(projectName, streakIndex) {
         endDate: currentStreak ? latestDate : null,
         longestStreak,
         longestStreakStart,
-        longestStreakEnd
+        longestStreakEnd,
+        lostStreaks
     };
+}
+
+// A streak of at least NOBODYS_PERFECT_MIN_DAYS that ended with a violation report.
+const NOBODYS_PERFECT_MIN_DAYS = 365;
+
+function recordLostStreak(lostStreaks, runStart, runEnd, lostDate) {
+    if (!runStart || !runEnd) return;
+    const days = calculateCalendarDays(runStart, runEnd);
+    if (days >= NOBODYS_PERFECT_MIN_DAYS) {
+        lostStreaks.push({ startDate: runStart, endDate: runEnd, lostDate, days });
+    }
 }
 
 function calculateCalendarDays(fromDate, toDate) {
@@ -196,7 +405,7 @@ function calculateStreak(projectName, reportList) {
         .filter(filename => !filename.includes('-FAILED.json'))
         .filter(filename => filename.includes(projectName));
 
-    if (projectReports.length === 0) return { days: 0, startDate: null, longestStreak: 0, longestStreakStart: null };
+    if (projectReports.length === 0) return { days: 0, startDate: null, longestStreak: 0, longestStreakStart: null, lostStreaks: [] };
 
     // Deduplicate reports by date - keep only the newest report per date
     const reportsByDate = new Map();
@@ -228,6 +437,7 @@ function calculateStreak(projectName, reportList) {
     let longestStreak = 0;
     let longestStreakStart = null;
     let longestStreakEnd = null;
+    const lostStreaks = [];
     for (const report of reports) {
         if (report.clear) {
             if (!runStart) runStart = report.date;
@@ -239,6 +449,7 @@ function calculateStreak(projectName, reportList) {
                 longestStreakEnd = runEnd;
             }
         } else {
+            recordLostStreak(lostStreaks, runStart, runEnd, report.date);
             runStart = null;
             runEnd = null;
         }
@@ -254,7 +465,8 @@ function calculateStreak(projectName, reportList) {
         endDate: currentStreak ? latest.date : null,
         longestStreak,
         longestStreakStart,
-        longestStreakEnd
+        longestStreakEnd,
+        lostStreaks
     };
 }
 
@@ -263,7 +475,7 @@ function calculateStreak(projectName, reportList) {
  * @param {string} projectName - Name of the project
  * @param {number} currentStreak - Current streak days
  * @param {array} existingAchievements - Existing achievements
- * @param {object} streakData - Object with {startDate, longestStreak, longestStreakStart}
+ * @param {object} streakData - Object with {startDate, longestStreak, longestStreakStart, lostStreaks}
  * @returns {array} - New achievements to add
  */
 function checkForNewAchievements(projectName, currentStreak, existingAchievements = [], streakData = {}) {
@@ -317,8 +529,27 @@ function checkForNewAchievements(projectName, currentStreak, existingAchievement
         }
     }
 
+    // "Nobody's Perfect": one per streak of 365+ days that was lost
+    for (const lost of streakData.lostStreaks || []) {
+        const alreadyHas = existingAchievements.some(a => a.type === 'nobodys_perfect' && a.toDate === lost.endDate);
+        if (!alreadyHas) {
+            newAchievements.push({
+                type: 'nobodys_perfect',
+                fromDate: lost.startDate,
+                toDate: lost.endDate,
+                lostDate: lost.lostDate,
+                lostReason: lost.reason || null,
+                unlockedDate: today,
+                streakDays: lost.days
+            });
+        }
+    }
+
     return newAchievements;
 }
 
-// Run the script
-trackAchievements();
+if (require.main === module) {
+    trackAchievements();
+}
+
+module.exports = { calculateStreakFromIndex, calculateStreak, checkForNewAchievements, getLostStreakReason };
