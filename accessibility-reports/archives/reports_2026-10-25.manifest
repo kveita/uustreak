@@ -1,0 +1,287 @@
+./
+./daily_summary.json
+./daily_summary_part_0.json
+./daily_summary_part_1.json
+./violations-Aberia AS-2026-10-25T02-15-44_196Z-count-6.json
+./violations-Accenture Norge-2026-10-25T02-15-58_111Z-count-1.json
+./violations-Adecco Norge AS-2026-10-25T02-16-12_711Z-count-5.json
+./violations-Adresseavisen AS-2026-10-25T02-16-37_550Z-count-7.json
+./violations-Aftenposten AS-2026-10-25T02-16-52_312Z-count-2.json
+./violations-Agder fylkeskommune-2026-10-25T02-17-07_351Z-count-1.json
+./violations-Agderposten AS-2026-10-25T02-17-23_563Z-count-4.json
+./violations-Akershus fylkeskommune-2026-10-25T02-17-38_370Z-count-1.json
+./violations-Aktiv Eiendomsmegling AS-2026-10-25T02-17-53_321Z-count-5.json
+./violations-Aleris Helse AS-2026-10-25T02-18-06_371Z-count-0.json
+./violations-Alta ungdomsskole-2026-10-25T02-18-20_783Z-count-1.json
+./violations-Amalie Skram videregående skole-2026-10-25T02-18-34_791Z-count-4.json
+./violations-Arbeids- og velferdsetaten-2026-10-25T02-18-47_560Z-count-1.json
+./violations-Arbeidstilsynet-2026-10-25T02-19-02_109Z-count-3.json
+./violations-Arendal kommune-2026-10-25T02-19-18_537Z-count-1.json
+./violations-Arkitektur og designhøyskolen i Oslo-2026-10-25T02-19-32_498Z-count-0.json
+./violations-Arngren-2026-10-25T02-19-54_583Z-count-6.json
+./violations-Asker kommune-2026-10-25T02-20-08_904Z-count-3.json
+./violations-Asker og Bærum Budstikke AS-2026-10-25T02-20-25_414Z-count-9.json
+./violations-Askvoll kommune-2026-10-25T02-20-40_114Z-count-3.json
+./violations-Assistermeg AS-2026-10-25T02-20-56_853Z-count-0.json
+./violations-Atea Norge-2026-10-25T02-21-12_793Z-count-6.json
+./violations-BKK AS-2026-10-25T02-21-26_177Z-count-4.json
+./violations-BN Bank ASA-2026-10-25T02-21-39_830Z-count-5.json
+./violations-BPA Nord-2026-10-25T02-21-53_927Z-count-1.json
+./violations-Bank Norwegian AS-2026-10-25T02-22-07_674Z-count-2.json
+./violations-Barne-, ungdoms-, og familiedirektoratet-2026-10-25T02-22-21_082Z-count-1.json
+./violations-Bekk-2026-10-25T02-22-35_257Z-count-1.json
+./violations-Bergen Kino AS-2026-10-25T02-23-03_501Z-count-8.json
+./violations-Bergen Røde Kors Sykehjem AS-2026-10-25T02-23-17_740Z-count-1.json
+./violations-Bergen kommune-2026-10-25T02-23-31_141Z-count-0.json
+./violations-Bergens Tidende AS-2026-10-25T02-23-45_264Z-count-2.json
+./violations-Bergensavisen AS-2026-10-25T02-24-04_350Z-count-9.json
+./violations-Best Western AS-2026-10-25T02-24-19_076Z-count-2.json
+./violations-Biltema AS-2026-10-25T02-24-38_125Z-count-10.json
+./violations-Bladet Nordlys AS-2026-10-25T02-24-53_830Z-count-9.json
+./violations-Bladet Vesterålen AS-2026-10-25T02-25-10_132Z-count-6.json
+./violations-Bodø videregående skole-2026-10-25T02-25-25_515Z-count-2.json
+./violations-Bouvet Norge-2026-10-25T02-25-38_646Z-count-5.json
+./violations-Breidablikk ungdomsskole-2026-10-25T02-25-53_620Z-count-2.json
+./violations-Byggmakker-2026-10-25T02-26-02_573Z-SKIPPED.json
+./violations-Bærum kommune-2026-10-25T02-26-10_539Z-SKIPPED.json
+./violations-COOP Norge SA-2026-10-25T02-26-23_834Z-count-5.json
+./violations-Capgemini Norge-2026-10-25T02-26-37_523Z-count-8.json
+./violations-Circle K AS-2026-10-25T02-26-53_868Z-count-7.json
+./violations-Clas Ohlson AS-2026-10-25T02-27-12_162Z-count-8.json
+./violations-Color Line AS-2026-10-25T02-27-26_607Z-count-2.json
+./violations-Colosseumklinikken AS-2026-10-25T02-27-40_033Z-count-2.json
+./violations-Connect Bus AS-2026-10-25T02-27-52_464Z-count-4.json
+./violations-Cubus AS-2026-10-25T02-28-00_848Z-SKIPPED.json
+./violations-DNB Bank ASA-2026-10-25T02-28-13_671Z-count-0.json
+./violations-Dagbladet AS-2026-10-25T02-28-33_548Z-count-4.json
+./violations-Dagbladet Finnmarken AS-2026-10-25T02-28-50_107Z-count-5.json
+./violations-Dagens Næringsliv AS-2026-10-25T02-29-06_261Z-count-6.json
+./violations-Dagsavisen AS-2026-10-25T02-29-37_377Z-count-9.json
+./violations-Dalane Tidende AS-2026-10-25T02-29-54_475Z-count-7.json
+./violations-Danske Bank AS-2026-10-25T02-30-08_504Z-count-1.json
+./violations-De Bergenske AS-2026-10-25T02-30-23_535Z-count-6.json
+./violations-Dedicare AS-2026-10-25T02-30-37_032Z-count-9.json
+./violations-Deloitte Norge-2026-10-25T02-31-01_056Z-count-4.json
+./violations-Den Nationale Scene AS-2026-10-25T02-31-15_705Z-count-5.json
+./violations-Departementenes sikkerhets- og serviceorganisasjon-2026-10-25T02-31-29_010Z-count-0.json
+./violations-Dfind Consulting-2026-10-25T02-31-43_783Z-count-2.json
+./violations-Digitaliseringsdirektoratet-2026-10-25T02-31-57_751Z-count-0.json
+./violations-Direktoratet for e-helse-2026-10-25T02-32-11_413Z-count-3.json
+./violations-Direktoratet for utviklingssamarbeid-2026-10-25T02-32-25_383Z-count-3.json
+./violations-Drammens Tidende AS-2026-10-25T02-32-42_419Z-count-8.json
+./violations-Dressmann AS-2026-10-25T02-32-50_323Z-SKIPPED.json
+./violations-EY-2026-10-25T02-33-04_030Z-count-2.json
+./violations-Eidsiva Bredbånd AS-2026-10-25T02-33-17_396Z-count-6.json
+./violations-Eiendomsmegler 1 AS-2026-10-25T02-33-30_602Z-count-1.json
+./violations-Eiendomsmegler Vest AS-2026-10-25T02-33-39_351Z-SKIPPED.json
+./violations-Eiendomsmelger Krogsveen AS-2026-10-25T02-33-51_841Z-count-2.json
+./violations-Eika Gruppen AS-2026-10-25T02-34-07_495Z-count-2.json
+./violations-Elkjøp AS-2026-10-25T02-34-16_417Z-SKIPPED.json
+./violations-Elvia AS-2026-10-25T02-34-30_148Z-count-4.json
+./violations-Experis AS-2026-10-25T02-34-47_425Z-count-1.json
+./violations-Extra Leker Butikker AS-2026-10-25T02-35-03_009Z-count-9.json
+./violations-Fagerlund skole-2026-10-25T02-35-17_609Z-count-0.json
+./violations-Fagforbundet-2026-10-25T02-35-32_796Z-count-3.json
+./violations-Family Sports Club AS-2026-10-25T02-35-47_754Z-count-5.json
+./violations-Fana Sparebank-2026-10-25T02-36-01_290Z-count-4.json
+./violations-Farnes skule-2026-10-25T02-36-16_557Z-count-3.json
+./violations-Fellesforbundet-2026-10-25T02-36-30_075Z-count-0.json
+./violations-Fevik skole-2026-10-25T02-36-44_850Z-count-2.json
+./violations-Finnmarkssykehuset HF-2026-10-25T02-36-58_515Z-count-1.json
+./violations-Firda Media AS-2026-10-25T02-37-15_751Z-count-8.json
+./violations-First Hotels AS-2026-10-25T02-37-33_190Z-count-4.json
+./violations-Fjord1 ASA-2026-10-25T02-37-46_439Z-count-2.json
+./violations-Flytoget AS-2026-10-25T02-38-21_070Z-count-7.json
+./violations-Forsvaret-2026-10-25T02-38-34_945Z-count-1.json
+./violations-Fredrik II videregående skole-2026-10-25T02-38-50_661Z-count-1.json
+./violations-Fredriksstad Blad AS-2026-10-25T02-39-07_824Z-count-8.json
+./violations-Fredrikstad kommune-2026-10-25T02-39-26_306Z-count-4.json
+./violations-Frende Skadeforsikring AS-2026-10-25T02-39-40_108Z-count-3.json
+./violations-Fresh Fitness AS-2026-10-25T02-39-54_724Z-count-0.json
+./violations-Fylkesmannen i Oslo og Akershus-2026-10-25T02-40-09_193Z-count-0.json
+./violations-Fürst Med-Lab AS-2026-10-25T02-40-23_179Z-count-1.json
+./violations-Hamar kommune-2026-10-25T02-40-38_528Z-count-5.json
+./violations-Hammerfest kommune-2026-10-25T02-40-53_228Z-count-3.json
+./violations-Handel og Kontor i Norge-2026-10-25T02-41-08_625Z-count-5.json
+./violations-Handelsbanken-2026-10-25T02-41-24_458Z-count-0.json
+./violations-Harstad kommune-2026-10-25T02-41-39_306Z-count-0.json
+./violations-Haugesund Sparebank-2026-10-25T02-41-54_702Z-count-1.json
+./violations-Haugesund kommune-2026-10-25T02-42-10_110Z-count-3.json
+./violations-Helse Bergen HF-2026-10-25T02-42-24_190Z-count-1.json
+./violations-Helsedirektoratet-2026-10-25T02-42-37_724Z-count-3.json
+./violations-Hosle skole-2026-10-25T02-42-51_546Z-count-5.json
+./violations-Hotel Alexandra AS-2026-10-25T02-43-05_010Z-count-10.json
+./violations-Humana Helse AS-2026-10-25T02-43-20_223Z-count-0.json
+./violations-Hurtigruten AS-2026-10-25T02-43-34_436Z-count-5.json
+./violations-Husbanken-2026-10-25T02-43-47_997Z-count-0.json
+./violations-Høgskulen på Vestlandet-2026-10-25T02-44-01_888Z-count-3.json
+./violations-If Skadeforsikring NUF-2026-10-25T02-44-14_956Z-count-2.json
+./violations-Inklud-2026-10-25T02-44-28_405Z-count-0.json
+./violations-Ishavsbyen videregående skole-2026-10-25T02-44-45_717Z-count-2.json
+./violations-Itera-2026-10-25T02-44-59_183Z-count-5.json
+./violations-JAG Assistanse AS-2026-10-25T02-45-13_721Z-count-8.json
+./violations-Jevnaker ungdomsskole-2026-10-25T02-45-28_221Z-count-0.json
+./violations-Jobzone Norge AS-2026-10-25T02-45-42_008Z-count-6.json
+./violations-Jotunheimen og Valdresruten Bilselskap AS-2026-10-25T02-45-56_975Z-count-6.json
+./violations-Jysk AS-2026-10-25T02-46-10_624Z-count-2.json
+./violations-KLP Banken AS-2026-10-25T02-46-25_290Z-count-0.json
+./violations-KappAhl AS-2026-10-25T02-46-34_151Z-SKIPPED.json
+./violations-Karmøy kommune-2026-10-25T02-46-49_491Z-count-2.json
+./violations-Kid Interiør AS-2026-10-25T02-46-58_033Z-SKIPPED.json
+./violations-KildeGruppen AS-2026-10-25T02-47-12_024Z-count-1.json
+./violations-Knowit Norge-2026-10-25T02-47-29_851Z-count-5.json
+./violations-Komplett Services AS-2026-10-25T02-47-43_518Z-count-4.json
+./violations-Kongsberg kommune-2026-10-25T02-47-57_658Z-count-1.json
+./violations-Kragerø skole-2026-10-25T02-48-13_244Z-count-3.json
+./violations-Kreftforeningen-2026-10-25T02-48-28_314Z-count-4.json
+./violations-Kriminalomsorgsdirektoratet-2026-10-25T02-48-40_881Z-count-0.json
+./violations-Kristiansand Dyrepark AS-2026-10-25T02-48-55_907Z-count-3.json
+./violations-Kristiansand kommune-2026-10-25T02-50-04_382Z-FAILED.json
+./violations-Krokstad skole-2026-10-25T02-50-16_836Z-count-5.json
+./violations-Kuben videregående skole-2026-10-25T02-50-32_000Z-count-5.json
+./violations-Kvadraturen skolesenter-2026-10-25T02-50-46_880Z-count-3.json
+./violations-LO - Landsorganisasjonen i Norge-2026-10-25T02-51-00_985Z-count-3.json
+./violations-Landbruksdirektoratet-2026-10-25T02-51-14_293Z-count-1.json
+./violations-Landkreditt Bank AS-2026-10-25T02-51-28_535Z-count-7.json
+./violations-Lillestrøm kommune-2026-10-25T02-51-42_614Z-count-0.json
+./violations-Lofotr Vikingmuseum AS-2026-10-25T02-51-57_719Z-count-7.json
+./violations-Lyse Elnett AS-2026-10-25T02-52-12_279Z-count-6.json
+./violations-Læringsverkstedet AS-2026-10-25T02-15-46_278Z-count-7.json
+./violations-Lørenskog kommune-2026-10-25T02-16-01_725Z-count-3.json
+./violations-Manpower AS-2026-10-25T02-16-16_512Z-count-5.json
+./violations-Mattilsynet-2026-10-25T02-16-30_527Z-count-0.json
+./violations-Mediehuset Nettavisen AS-2026-10-25T02-16-47_886Z-count-6.json
+./violations-Molde kommune-2026-10-25T02-17-02_781Z-count-3.json
+./violations-Molde videregående skole-2026-10-25T02-17-17_488Z-count-1.json
+./violations-Museene i Sør-Trøndelag AS-2026-10-25T02-17-30_727Z-count-1.json
+./violations-NITO - Norges ingeniør- og teknologiorganisasjon-2026-10-25T02-17-44_640Z-count-1.json
+./violations-Nille AS-2026-10-25T02-18-00_194Z-count-6.json
+./violations-Nord studentsamskipnad-2026-10-25T02-18-13_521Z-count-0.json
+./violations-Nord universitet-2026-10-25T02-18-26_737Z-count-0.json
+./violations-Nordea Bank AB-2026-10-25T02-18-40_499Z-count-1.json
+./violations-Nordic Choice Hotels-2026-10-25T02-18-54_275Z-count-1.json
+./violations-Nordlandsnett AS-2026-10-25T02-19-08_808Z-count-4.json
+./violations-Nordre Follo kommune-2026-10-25T02-19-23_510Z-count-1.json
+./violations-Nordvik & Partners Eiendomsmegling AS-2026-10-25T02-19-38_347Z-count-3.json
+./violations-Norefjell Ski & Spa AS-2026-10-25T02-19-51_473Z-count-2.json
+./violations-Norges KFUK-KFUM-2026-10-25T02-20-11_207Z-count-4.json
+./violations-Norges Røde Kors-2026-10-25T02-20-24_296Z-count-3.json
+./violations-Norges forskningsråd-2026-10-25T02-20-38_324Z-count-4.json
+./violations-Norges idrettshøgskole-2026-10-25T02-20-52_055Z-count-0.json
+./violations-Norgesbuss AS-2026-10-25T02-21-08_444Z-count-4.json
+./violations-Norgesnett AS-2026-10-25T02-21-23_450Z-count-3.json
+./violations-Norled AS-2026-10-25T02-21-36_882Z-count-2.json
+./violations-Norsk Rikskringkasting AS-2026-10-25T02-22-02_241Z-count-0.json
+./violations-Norsk Sykepleierforbund-2026-10-25T02-22-15_355Z-count-0.json
+./violations-Norsk pasientskadeerstatning-2026-10-25T02-22-28_669Z-count-1.json
+./violations-Norwegian Air Shuttle ASA-2026-10-25T02-22-36_998Z-SKIPPED.json
+./violations-Nøkleby skole-2026-10-25T02-22-51_842Z-count-3.json
+./violations-OBOS Eiendomsmeglere AS-2026-10-25T02-23-06_064Z-count-0.json
+./violations-Oppegård kommune-2026-10-25T02-23-21_182Z-count-1.json
+./violations-Orkla Sparebank-2026-10-25T02-23-36_398Z-count-1.json
+./violations-Oslo Nye Teater AS-2026-10-25T02-23-49_620Z-count-4.json
+./violations-Oslo universitetssykehus HF-2026-10-25T02-24-03_143Z-count-1.json
+./violations-P4 Radio AS-2026-10-25T02-24-18_508Z-count-8.json
+./violations-Panorama Eiendomsmegling AS-2026-10-25T02-24-31_654Z-count-2.json
+./violations-Plantasjen AS-2026-10-25T02-24-40_902Z-SKIPPED.json
+./violations-Politiet-2026-10-25T02-24-54_242Z-count-1.json
+./violations-Porsgrunn kommune-2026-10-25T02-25-08_155Z-count-0.json
+./violations-Rana kommune-2026-10-25T02-25-23_265Z-count-3.json
+./violations-Redd Barna-2026-10-25T02-25-37_484Z-count-3.json
+./violations-Registerenheten i Brønnøysund-2026-10-25T02-25-51_912Z-count-1.json
+./violations-Rema 1000-2026-10-25T02-26-06_621Z-count-5.json
+./violations-Riksteatret-2026-10-25T02-26-20_677Z-count-3.json
+./violations-Rikstv AS-2026-10-25T02-26-34_561Z-count-1.json
+./violations-Ringerike kommune-2026-10-25T02-26-49_784Z-count-5.json
+./violations-Røde Kors Sentrene AS-2026-10-25T02-27-03_251Z-count-4.json
+./violations-SAS - Scandinavian Airlines System-2026-10-25T02-27-11_808Z-SKIPPED.json
+./violations-SEB - Skandinaviska Enskilda Banken NUF-2026-10-25T02-27-26_121Z-count-1.json
+./violations-Sandefjord videregående skole-2026-10-25T02-27-43_838Z-count-1.json
+./violations-Sandnes kommune-2026-10-25T02-28-01_137Z-count-5.json
+./violations-Sarpsborg kommune-2026-10-25T02-28-15_144Z-count-6.json
+./violations-Sbanken ASA-2026-10-25T02-28-27_713Z-count-0.json
+./violations-Scandic Hotels AS-2026-10-25T02-28-36_512Z-SKIPPED.json
+./violations-Skadberg skole-2026-10-25T02-28-50_659Z-count-2.json
+./violations-Skagen AS-2026-10-25T02-29-04_681Z-count-4.json
+./violations-Skatteetaten-2026-10-25T02-29-19_909Z-count-0.json
+./violations-Skranevatnet skole-2026-10-25T02-29-35_621Z-count-1.json
+./violations-Sola Strand Hotel-2026-10-25T02-29-49_618Z-count-3.json
+./violations-Solstrand Hotel & Bad AS-2026-10-25T02-30-03_299Z-count-7.json
+./violations-Sopra Steria Norge-2026-10-25T02-30-18_138Z-count-0.json
+./violations-Sparebank 1 DA-2026-10-25T02-30-31_740Z-count-3.json
+./violations-St. Olavs hospital HF-2026-10-25T02-30-44_808Z-count-1.json
+./violations-Statens lånekasse for utdanning-2026-10-25T02-30-59_019Z-count-2.json
+./violations-Statens pensjonskasse-2026-10-25T02-31-09_054Z-SKIPPED.json
+./violations-Statens vegvesen-2026-10-25T02-31-23_020Z-count-0.json
+./violations-Statistisk sentralbyrå-2026-10-25T02-31-37_166Z-count-0.json
+./violations-Statped-2026-10-25T02-31-49_814Z-count-1.json
+./violations-Stavanger Aftenblad AS-2026-10-25T02-32-04_248Z-count-3.json
+./violations-Stavanger Turistforening-2026-10-25T02-32-18_200Z-count-10.json
+./violations-Stavanger kommune-2026-10-25T02-32-33_215Z-count-2.json
+./violations-Steinerskolen i Stavanger-2026-10-25T02-32-46_415Z-count-5.json
+./violations-Steinkjer videregående skole-2026-10-25T02-33-00_372Z-count-4.json
+./violations-Stiftelsen Bymuseet i Bergen-2026-10-25T02-33-15_777Z-count-8.json
+./violations-Stiftelsen Danvik-2026-10-25T02-33-28_609Z-count-3.json
+./violations-Stiftelsen Flyktninghjelpen-2026-10-25T02-33-42_496Z-count-3.json
+./violations-Stiftelsen Handelshøyskolen BI-2026-10-25T02-33-56_840Z-count-0.json
+./violations-Stiftelsen Hudøy-2026-10-25T02-34-22_648Z-count-5.json
+./violations-Stiftelsen Lillehammer Museum-2026-10-25T02-34-35_658Z-count-2.json
+./violations-Stiftelsen Nasjonalmuseet for Kunst-2026-10-25T02-34-50_287Z-count-4.json
+./violations-Stiftelsen Norlandsmuseet-2026-10-25T02-35-05_647Z-count-4.json
+./violations-Stiftelsen norsk teknisk museum-2026-10-25T02-35-20_837Z-count-9.json
+./violations-Storebrand ASA-2026-10-25T02-35-34_597Z-count-1.json
+./violations-Stormberg AS-2026-10-25T02-35-49_070Z-count-7.json
+./violations-Stortinget-2026-10-25T02-36-05_188Z-count-1.json
+./violations-Strindheim skole-2026-10-25T02-36-20_000Z-count-0.json
+./violations-Studentsamskipnaden i Agder-2026-10-25T02-36-34_163Z-count-6.json
+./violations-Studentsamskipnaden i Innlandet-2026-10-25T02-36-49_449Z-count-4.json
+./violations-Studentsamskipnaden på Vestlandet-2026-10-25T02-37-03_876Z-count-5.json
+./violations-Sunnaas sykehus HF-2026-10-25T02-37-17_832Z-count-1.json
+./violations-Sunnmørsposten AS-2026-10-25T02-37-34_444Z-count-5.json
+./violations-Sykehuset Innlandet HF-2026-10-25T02-37-49_363Z-count-1.json
+./violations-Synsam Norge AS-2026-10-25T02-38-06_723Z-count-1.json
+./violations-Sør-Varanger kommune-2026-10-25T02-38-24_869Z-count-1.json
+./violations-Tannhelse Rogaland FKF-2026-10-25T02-38-37_897Z-count-4.json
+./violations-Tekna - Teknisk- naturvitenskapelig forening-2026-10-25T02-38-51_872Z-count-5.json
+./violations-Teknisk Ukeblad Media AS-2026-10-25T02-39-22_003Z-count-6.json
+./violations-Telenor ASA-2026-10-25T02-39-37_529Z-count-4.json
+./violations-Telia Norge AS-2026-10-25T02-39-51_698Z-count-3.json
+./violations-The Thief Hotel AS-2026-10-25T02-40-10_053Z-count-4.json
+./violations-Thon Hotels AS-2026-10-25T02-40-24_075Z-count-3.json
+./violations-TietoEVRY-2026-10-25T02-40-38_577Z-count-2.json
+./violations-Tolletaten-2026-10-25T02-40-52_483Z-count-1.json
+./violations-Top Temp AS-2026-10-25T02-41-07_305Z-count-6.json
+./violations-Travel Retail Norway AS-2026-10-25T02-41-36_831Z-count-9.json
+./violations-Tromsdalen skole-2026-10-25T02-41-52_531Z-count-8.json
+./violations-Tromsø kommune-2026-10-25T02-42-03_817Z-SKIPPED.json
+./violations-Trondheim kommune-2026-10-25T02-42-17_801Z-count-0.json
+./violations-Trones skole-2026-10-25T02-42-31_553Z-count-7.json
+./violations-Tryg forsikring-2026-10-25T02-42-45_522Z-count-8.json
+./violations-Trøndelag fylkeskommune-2026-10-25T02-42-59_508Z-count-3.json
+./violations-Trønderenergi Nett AS-2026-10-25T02-43-12_454Z-count-1.json
+./violations-Tønsberg kommune-2026-10-25T02-43-27_643Z-count-3.json
+./violations-Uloba - Independent Living Norge SA-2026-10-25T02-43-41_812Z-count-6.json
+./violations-Ung.no-2026-10-25T02-43-55_932Z-count-0.json
+./violations-Unibuss AS-2026-10-25T02-44-09_674Z-count-4.json
+./violations-Unicare BAB AS-2026-10-25T02-44-24_197Z-count-7.json
+./violations-Universitet i Agder-2026-10-25T02-44-38_273Z-count-0.json
+./violations-Universitetet i Bergen-2026-10-25T02-44-53_393Z-count-0.json
+./violations-Universitetet i Oslo-2026-10-25T02-45-07_356Z-count-2.json
+./violations-Universitetet i Stavanger-2026-10-25T02-45-31_059Z-count-1.json
+./violations-Universitetet i Sørøst-Norge-2026-10-25T02-45-47_097Z-count-4.json
+./violations-Utdanningsdirektoratet-2026-10-25T02-46-00_618Z-count-3.json
+./violations-Utdanningsforbundet-2026-10-25T02-46-15_024Z-count-6.json
+./violations-Utlendingsdirektoratet-2026-10-25T02-46-28_768Z-count-4.json
+./violations-Utlendingsnemnda-2026-10-25T02-46-43_229Z-count-3.json
+./violations-Verdens Gang AS-2026-10-25T02-46-58_165Z-count-2.json
+./violations-Vestland fylkeskommune-2026-10-25T02-47-12_630Z-count-5.json
+./violations-Vestlia Resort AS-2026-10-25T02-47-40_640Z-count-9.json
+./violations-Vestre Viken HF-2026-10-25T02-47-55_267Z-count-1.json
+./violations-Vinmonopolet AS-2026-10-25T02-48-08_194Z-count-0.json
+./violations-Vitus Apotek Norsk Medisinaldepot AS-2026-10-25T02-48-32_599Z-count-6.json
+./violations-Vy Buss AS-2026-10-25T02-48-48_210Z-count-6.json
+./violations-Vygruppen AS-2026-10-25T02-49-03_626Z-count-3.json
+./violations-Widerøe AS-2026-10-25T02-49-11_708Z-SKIPPED.json
+./violations-XXL Sport & Villmark AS-2026-10-25T02-49-25_721Z-count-0.json
+./violations-Ålesund kommune-2026-10-25T02-49-41_390Z-count-1.json
+./violations-Årvoll skole-2026-10-25T02-49-56_092Z-count-1.json
