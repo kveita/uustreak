@@ -49,9 +49,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2026-03-11",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 248
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 254
       }
     ]
   },
@@ -69,9 +69,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2026-08-27",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 79
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 85
       }
     ]
   },
@@ -101,9 +101,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2025-09-21",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 419
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 425
       }
     ]
   },
@@ -127,9 +127,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2026-01-08",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 310
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 316
       }
     ]
   },
@@ -153,9 +153,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2026-10-14",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 31
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 37
       }
     ]
   },
@@ -191,9 +191,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2025-12-05",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 344
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 350
       }
     ]
   },
@@ -285,11 +285,17 @@
         "unlockedDate": "2026-03-15"
       },
       {
+        "type": "streak_365",
+        "fromDate": "2025-11-19",
+        "toDate": "2026-11-18",
+        "unlockedDate": "2026-11-18"
+      },
+      {
         "type": "longest_streak",
         "fromDate": "2025-11-19",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 360
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 366
       }
     ]
   },
@@ -383,9 +389,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2026-09-21",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 54
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 60
       }
     ]
   },
@@ -433,9 +439,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2026-05-09",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 189
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 195
       }
     ]
   },
@@ -563,9 +569,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2025-09-18",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 422
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 428
       }
     ]
   },
@@ -705,9 +711,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2026-10-14",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 31
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 37
       }
     ]
   },
@@ -810,9 +816,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2025-09-18",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 422
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 428
       }
     ]
   },
@@ -900,9 +906,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2026-08-20",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 86
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 92
       }
     ]
   },
@@ -1079,9 +1085,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2025-12-05",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 344
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 350
       }
     ]
   },
@@ -1131,9 +1137,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2026-11-11",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 3
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 9
       }
     ]
   },
@@ -1163,9 +1169,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2025-11-08",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 371
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 377
       }
     ]
   },
@@ -1179,7 +1185,15 @@
     "name": "NITO - Norges ingeniør- og teknologiorganisasjon",
     "Samfunnsområde": "Kultur, fritid, organisasjonar",
     "baseURL": "https://www.nito.no/",
-    "achievements": []
+    "achievements": [
+      {
+        "type": "longest_streak",
+        "fromDate": "2026-11-19",
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 1
+      }
+    ]
   },
   {
     "name": "Fagerlund skole",
@@ -1207,9 +1221,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2025-10-08",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 402
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 408
       }
     ]
   },
@@ -1335,9 +1349,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2026-07-24",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 113
+        "toDate": "2026-11-14",
+        "unlockedDate": "2026-11-15",
+        "streakDays": 114
       }
     ]
   },
@@ -1361,9 +1375,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2026-10-22",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 23
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 29
       }
     ]
   },
@@ -1405,9 +1419,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2026-07-05",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 132
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 138
       }
     ]
   },
@@ -1522,9 +1536,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2026-05-16",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 182
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 188
       }
     ]
   },
@@ -1680,9 +1694,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2026-05-27",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 171
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 177
       }
     ]
   },
@@ -1742,9 +1756,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2026-05-23",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 175
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 181
       }
     ]
   },
@@ -1993,9 +2007,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2025-09-18",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 422
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 428
       }
     ]
   },
@@ -2371,9 +2385,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2026-03-14",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 245
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 251
       }
     ]
   },
@@ -2634,9 +2648,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2026-05-16",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 182
+        "toDate": "2026-11-18",
+        "unlockedDate": "2026-11-18",
+        "streakDays": 187
       }
     ]
   },
@@ -2834,9 +2848,9 @@
       {
         "type": "longest_streak",
         "fromDate": "2025-09-18",
-        "toDate": "2026-11-13",
-        "unlockedDate": "2026-11-13",
-        "streakDays": 422
+        "toDate": "2026-11-19",
+        "unlockedDate": "2026-11-19",
+        "streakDays": 428
       }
     ]
   },
